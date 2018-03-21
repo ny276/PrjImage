@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +24,19 @@ public class MainActivity extends AppCompatActivity {
         }
         ImageView[] image = new ImageView[imgName.length];
         Integer[] imageId = {R.id.iv1, R.id.iv2, R.id.iv3, R.id.iv4, R.id.iv5, R.id.iv6, R.id.iv7, R.id.iv8, R.id.iv9};
+
+        for(int i=0; i<imgName.length; i++) {
+            final int index;
+            index = i;
+            image[index] = findViewById(imageId[index]);
+            image[index].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    voteCount[index]++;
+                    Toast.makeText(MainActivity.this, imgName[index] + " "+ voteCount[index] + "번 좋아요", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
         btResult = findViewById(R.id.btResult);
         btResult.setOnClickListener(new View.OnClickListener() {
