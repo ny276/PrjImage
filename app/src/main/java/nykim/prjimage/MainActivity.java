@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), Main2Activity.class);
+                i.putExtra("votCount", voteCount);
+                i.putExtra("imgName", imgName);
                 startActivity(i);
            }
        });
